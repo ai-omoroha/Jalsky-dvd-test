@@ -367,34 +367,66 @@ nav {
   margin-bottom: 16px;
   display: block;
 }
-.audience-rows { display: flex; flex-direction: column; }
+.audience-rows { display: flex; flex-direction: column; gap: 12px; }
 .audience-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--gray-200);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  transition: border-color 0.18s, box-shadow 0.18s;
 }
-.audience-row:last-child { border-bottom: none; }
+.audience-row:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 12px rgba(184,149,106,0.12);
+}
 .aud-icon {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--gray-100);
+  background: var(--off-white);
   border: 1px solid var(--gray-200);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 18px;
   flex-shrink: 0;
 }
 .aud-info { flex: 1; }
-.aud-role { font-size: 13px; font-weight: 400; color: var(--black); margin-bottom: 2px; }
-.aud-desc { font-size: 11px; color: var(--gray-400); line-height: 1.7; }
-.bar-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
-.bar-track { flex: 1; height: 2px; background: var(--gray-200); border-radius: 1px; overflow: hidden; }
-.bar-fill { height: 100%; background: var(--accent); border-radius: 1px; }
-.bar-pct { font-size: 10px; color: var(--gray-400); white-space: nowrap; }
+.aud-role { font-size: 14px; font-weight: 400; color: var(--black); margin-bottom: 2px; }
+.aud-desc { font-size: 12px; color: var(--gray-600); line-height: 1.6; }
+.aud-meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  min-width: 52px;
+}
+.aud-pct-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+}
+.aud-pct-label { font-size: 9px; letter-spacing: 0.1em; color: var(--gray-400); }
+.bar-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.bar-track {
+  flex: 1;
+  height: 4px;
+  background: var(--gray-200);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #d4ac82);
+  border-radius: 2px;
+}
 
 .scene-head { margin-bottom: 20px; }
 .scene-head h3 {
@@ -491,20 +523,20 @@ nav {
 .btn-primary:hover { background: #333; }
 .btn-secondary {
   display: block;
-  background: transparent;
-  color: var(--gray-600);
+  background: var(--accent);
+  color: #fff;
   text-align: center;
-  padding: 15px 28px;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  padding: 16px 28px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
   text-decoration: none;
-  border: 1px solid var(--gray-200);
-  transition: border-color 0.18s, color 0.18s;
+  border: none;
+  transition: background 0.18s, transform 0.12s;
   font-family: 'Noto Sans JP', sans-serif;
   border-radius: 2px;
+  font-weight: 400;
 }
-.btn-secondary:hover { border-color: var(--gray-600); color: var(--black); }
+.btn-secondary:hover { background: #a07d57; transform: translateY(-1px); }
 .contact-note {
   margin-top: 28px;
   padding-top: 24px;
@@ -760,7 +792,7 @@ footer {
   <div class="inner">
     <div class="section-head">
       <span class="label">For Whom &amp; How</span>
-      <h2>誰に・どのように使うか</h2>
+      <h2>この教材が誰に・どんなふうに使えるか</h2>
     </div>
     <p class="mapping-lead">この教材は、経営層から若手社員まで幅広い層に対応しています。テーマと対象に応じた活用マップをご確認ください。</p>
 
@@ -824,38 +856,59 @@ footer {
       <div>
         <span class="map-col-title">対象別おすすめ度</span>
         <div class="audience-rows">
+
           <div class="audience-row">
             <div class="aud-icon">👔</div>
             <div class="aud-info">
               <div class="aud-role">経営者・役員</div>
-              <div class="aud-desc">理念浸透・組織文化づくりの経営判断に。哲学で動く組織の実例として最適。</div>
-              <div class="bar-row"><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><div class="bar-pct">90%</div></div>
+              <div class="aud-desc">理念浸透・組織文化づくりの経営判断に。</div>
+              <div class="bar-row"><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+            </div>
+            <div class="aud-meter">
+              <div class="aud-pct-num">90</div>
+              <div class="aud-pct-label">/ 100</div>
             </div>
           </div>
+
           <div class="audience-row">
             <div class="aud-icon">📋</div>
             <div class="aud-info">
               <div class="aud-role">管理職・チームリーダー</div>
-              <div class="aud-desc">部下育成・チームビルディングに。「人を信頼して任せる」リーダーシップを考える素材として。</div>
-              <div class="bar-row"><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><div class="bar-pct">95%</div></div>
+              <div class="aud-desc">部下育成・チームビルディングに。最もおすすめ。</div>
+              <div class="bar-row"><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div></div>
+            </div>
+            <div class="aud-meter">
+              <div class="aud-pct-num">95</div>
+              <div class="aud-pct-label">/ 100</div>
             </div>
           </div>
+
           <div class="audience-row">
             <div class="aud-icon">💼</div>
             <div class="aud-info">
               <div class="aud-role">中堅・若手社員</div>
-              <div class="aud-desc">CS向上・接客意識の研修に。同世代のスタッフの姿が共感を呼び行動変容を促します。</div>
-              <div class="bar-row"><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div><div class="bar-pct">85%</div></div>
+              <div class="aud-desc">CS向上・接客意識の研修に。共感を呼び行動変容を促す。</div>
+              <div class="bar-row"><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+            </div>
+            <div class="aud-meter">
+              <div class="aud-pct-num">85</div>
+              <div class="aud-pct-label">/ 100</div>
             </div>
           </div>
+
           <div class="audience-row">
             <div class="aud-icon">🌱</div>
             <div class="aud-info">
               <div class="aud-role">新入社員</div>
-              <div class="aud-desc">「働く意義」を考えるオリエンテーションに。仕事への誇りと使命感を自分ごととして考えるきっかけに。</div>
-              <div class="bar-row"><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div><div class="bar-pct">70%</div></div>
+              <div class="aud-desc">「働く意義」を考えるオリエンテーションに。</div>
+              <div class="bar-row"><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+            </div>
+            <div class="aud-meter">
+              <div class="aud-pct-num">70</div>
+              <div class="aud-pct-label">/ 100</div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -917,7 +970,7 @@ footer {
         </div>
         <div class="btn-group">
           <a class="btn-primary" href="https://www.doit-fun.jp/shopping/products/detail.php?product_id=221">カートに入れる</a>
-          <a class="btn-secondary" href="https://www.doit-fun.jp/pdf/guidebook_010_011.pdf">解説PDFをダウンロード</a>
+          <a class="btn-secondary" href="https://www.doit-fun.jp/pdf/guidebook_010_011.pdf">📄 解説・勉強会の進め方 PDF を無料ダウンロード</a>
         </div>
         <div class="contact-note">
           お電話でのご相談・お問い合わせ<br>
